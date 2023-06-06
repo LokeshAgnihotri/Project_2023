@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import random
 import eng_to_ipa as ipa
 
@@ -14,8 +14,7 @@ def random_word():
         words = file.read().splitlines()
     random_word = random.choice(words)
     random_word_ipa = ipa.convert(random_word)    
-    print(random_word_ipa)
-    return {'random_word': random_word, 'random_word_ipa': random_word_ipa}
+    return jsonify({'random_word': random_word, 'random_word_ipa': random_word_ipa})
 
 if __name__ == '__main__':
     app.run()
