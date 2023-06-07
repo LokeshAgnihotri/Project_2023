@@ -5,6 +5,9 @@ import random
 import eng_to_ipa as ipa
 import pyttsx3
 from flask import make_response
+import speech_recognition as sr
+from pydub import AudioSegment
+
 
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
@@ -66,6 +69,23 @@ def random_word():
                     'pronunciation_audio': reference_recordings_path + pronunciation_audio_file})
 
 #https://www.makeuseof.com/tag/python-javascript-communicate-json/
+
+
+
+#route to receive the audioop
+@app.route('/upload-audio', methods=['POST'])
+def upload_audio():
+    if 'audio' in request.files:
+        audio_file = request.files['audio']
+        save_path = r'C:\Users\lokes\OneDrive\Desktop\project\Project_2023\Codebase\reference_recordings'
+        if not os.path.exists(save_path):
+            os.makedirs(save_path)
+        file_path = os.path.join(save_path, 'audio.wav')
+        audio_file.save(file_path)
+        return 'Audio file received and stored'
+    else:
+        return 'No audio file found in the request'
+
 
 if __name__ == '__main__':
     language = 'en'

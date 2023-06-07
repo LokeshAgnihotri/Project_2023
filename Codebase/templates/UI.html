@@ -8,23 +8,26 @@
 </head>
 
 <body class="text-center text-success">
+<div class="container">
     <h1 class="fs-1 fw-semibold text-center text-secondary">Pronunciation trainer</h1>
-    <input id="text-1" class="form-control-plaintext border rounded-0 border-1" type="text" value="Plain Text Value" />
+    <!-- <input id="text-1" class="form-control-plaintext border rounded-0 border-1" type="text" value="Plain Text Value" /> -->
     <div>
         <p>Enter the word you want to practice:</p>
         <textarea id="referenceWord" placeholder="Enter reference word"></textarea>
     </div>
-    <button id="button-1" class="btn btn-primary" type="button">Button</button>
-    <button id="button-2" class="btn btn-primary" type="button">Button</button>
+    <!-- <button id="button-1" class="btn btn-primary" type="button">Button</button>
+    <button id="button-2" class="btn btn-primary" type="button">Button</button> -->
     <button id="suggestRandomWord">Suggest Random Word</button>
-    <button id="microphone">Start Microphone</button>
+    <button id="microphone" >Start Recording </button>
+
     <button id="playRecording">Play Recording</button>
     <button id="feedback">Provide Feedback</button>
     <script src="../static/javascript/connector.js"></script>
     <script src="../static/javascript/get_random_word.js"></script>
-
+    <script src="../static/javascript/microphone.js"></script>
     <audio id="audio" controls autoplay> </audio>
     <source src="http://127.0.0.1:5000/reference_recordings/pronunciation_banana.mpeg" type="audio/mpeg">
+</div>
 
 
 </body>
