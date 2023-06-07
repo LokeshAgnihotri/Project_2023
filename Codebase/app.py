@@ -20,6 +20,7 @@ rootPath = ''
 app.config['UPLOAD_FOLDER'] = 'reference_recordings/'
 
 reference_recordings_path = 'reference_recordings/'
+captured_recordings_path = 'captured_recordings/'
 
 @app.route(rootPath+'/')
 def main():
@@ -77,7 +78,7 @@ def random_word():
 def upload_audio():
     if 'audio' in request.files:
         audio_file = request.files['audio']
-        save_path = r'C:\Users\lokes\OneDrive\Desktop\project\Project_2023\Codebase\reference_recordings'
+        save_path = os.path.join(captured_recordings_path)
         if not os.path.exists(save_path):
             os.makedirs(save_path)
         file_path = os.path.join(save_path, 'audio.wav')
