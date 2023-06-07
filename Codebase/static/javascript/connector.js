@@ -80,3 +80,22 @@ _button_post.onclick = function () {
     ).catch((err) => console.error(err));
 
 }
+
+
+// Enable audio playback
+
+const audio = document.getElementById("audio");
+const playButton = document.getElementById("playButton");
+const pauseButton = document.getElementById("pauseButton");
+
+playButton.onclick = function () {
+    audio.play();
+}
+
+pauseButton.onclick = function () {
+    audio.pause();
+}
+
+audio.onclick = function () {
+    audio.pause();
+}
