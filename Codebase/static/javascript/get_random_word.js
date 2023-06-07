@@ -4,9 +4,14 @@ function chooseRandomWord() {
       .then(data => {
         const randomWord = data.random_word;
         const randomWordIpa = data.random_word_ipa;
+        const randomWordAudio = data.pronunciation_audio;
 
-        document.getElementById("referenceWord").value = `Your random word is: ${randomWord} and its phonetics are: ${randomWordIpa}`;
+        document.getElementById("referenceWord").value = `Your random word is: ${randomWord} and its phonetics are: ${randomWordIpa} 
+        and You can listen to the word here: ${randomWordAudio}`;
+
+        document.getElementById("audio").src = randomWordAudio
       });
   }
 
   document.getElementById("suggestRandomWord").addEventListener("click", chooseRandomWord);
+
