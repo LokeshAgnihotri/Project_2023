@@ -83,10 +83,17 @@ def upload_audio():
             os.makedirs(save_path)
         file_path = os.path.join(save_path, 'audio.wav')
         audio_file.save(file_path)
-        return 'Audio file received and stored'
+
+        # Convert the recorded audio to text
+        r = sr.Recognizer()
+        with sr.AudioFile(file_path) as source:
+            audio = r.record(source)
+            text = r.recognize_google(audio)
+
+        # Return the converted text as JSON
+        return jsonify({'text': text})
     else:
         return 'No audio file found in the request'
-
 
 if __name__ == '__main__':
     language = 'en'
