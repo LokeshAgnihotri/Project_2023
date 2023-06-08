@@ -5,29 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>PronunceTrainer</title>
     <link rel="stylesheet" href="../static/stylesheet/pronounce-ai-trainer.css" />
+    <link rel="stylesheet" href="../static/stylesheet/audio_record.css" />
+    <link rel="stylesheet" href="../static/stylesheet/reset.css" />
+    <link rel="stylesheet" href="../static/stylesheet/font.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" />
 </head>
 
 <body class="text-center text-success">
-<div class="container">
-    <h1 class="fs-1 fw-semibold text-center text-secondary">Pronunciation trainer</h1>
-    <!-- <input id="text-1" class="form-control-plaintext border rounded-0 border-1" type="text" value="Plain Text Value" /> -->
-    <div>
-        <p>Enter the word you want to practice:</p>
-        <textarea id="referenceWord" placeholder="Enter reference word"></textarea>
-    </div>
-    <!-- <button id="button-1" class="btn btn-primary" type="button">Button</button>
-    <button id="button-2" class="btn btn-primary" type="button">Button</button> -->
-    <button id="suggestRandomWord">Suggest Random Word</button>
-    <button id="microphone" >Start Recording </button>
+    <div class="container">
+        <h1 class="fs-1 fw-semibold text-center text-secondary">Pronunciation trainer</h1>
+        <!-- <input id="text-1" class="form-control-plaintext border rounded-0 border-1" type="text" value="Plain Text Value" /> -->
+        <div>
+            <p>Enter the word you want to practice:</p>
+            <textarea id="referenceWord" placeholder="Enter reference word"></textarea>
+        </div>
+        <button id="suggestRandomWord">Suggest Random Word</button>
+        <button id="microphone" >Start Recording </button>
 
-    <button id="playRecording">Play Recording</button>
-    <button id="feedback">Provide Feedback</button>
+        <button id="playRecording">Play Recording</button>
+        <button id="feedback">Provide Feedback</button>
+
+    </div>
+
+    <div class="audio-recording-container">
+        <h1 class="title">Audio Recording API Demo</h1>
+        <i class="start-recording-button fa fa-microphone" aria-hidden="true"></i>
+        <div class="recording-contorl-buttons-container hide">
+            <i class="cancel-recording-button fa fa-times-circle-o" aria-hidden="true"></i>
+            <div class="recording-elapsed-time">
+                <i class="red-recording-dot fa fa-circle" aria-hidden="true"></i>
+                <p class="elapsed-time"></p>
+            </div>
+            <i class="stop-recording-button fa fa-stop-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="text-indication-of-audio-playing-container">
+            <p class="text-indication-of-audio-playing hide">Audio is playing<span>.</span><span>.</span><span>.</span></p>
+        </div>
+    </div>
+
+    <div class="overlay hide">
+        <div class="browser-not-supporting-audio-recording-box">
+            <p>To record audio, use browsers like Chrome and Firefox that support audio recording.</p>
+            <button type="button" class="close-browser-not-supported-box">Ok.</button>
+        </div>
+    </div>
+
+    <audio controls class="audio-element hide">
+    </audio>
+
     <script src="../static/javascript/connector.js"></script>
     <script src="../static/javascript/get_random_word.js"></script>
     <script src="../static/javascript/microphone.js"></script>
-    <audio id="audio" controls autoplay> </audio>
-    <source src="http://127.0.0.1:5000/reference_recordings/pronunciation_banana.mpeg" type="audio/mpeg">
-</div>
+    <script src="../static/javascript/record_audio.js"></script>
 
 
 </body>
