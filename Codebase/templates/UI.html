@@ -1,63 +1,92 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" >
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>PronunceTrainer</title>
-    <link rel="stylesheet" href="../static/stylesheet/pronounce-ai-trainer.css" />
-    <link rel="stylesheet" href="../static/stylesheet/audio_record.css" />
-    <link rel="stylesheet" href="../static/stylesheet/reset.css" />
-    <link rel="stylesheet" href="../static/stylesheet/font.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pronunciation Assessment</title>
+    <link rel="stylesheet" href="../static/stylesheet/style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
-<body class="text-center text-success">
-    <div class="container">
-        <h1 class="fs-1 fw-semibold text-center text-secondary">Pronunciation trainer</h1>
-        <!-- <input id="text-1" class="form-control-plaintext border rounded-0 border-1" type="text" value="Plain Text Value" /> -->
-        <div>
-            <p>Enter the word you want to practice:</p>
-            <textarea id="referenceWord" placeholder="Enter reference word"></textarea>
+<body>
+
+    <div class="container" id="ttscont">
+        <div class="button-container">
+            <button id="buttonhear" class="h-button">
+                <span class="fas fa-headphones"></span> Pronunciation Trainer </button>
         </div>
-        <button id="suggestRandomWord">Suggest Random Word</button>
-        <button id="microphone" >Start Recording </button>
 
-        <button id="playRecording">Play Recording</button>
-        <button id="feedback">Provide Feedback</button>
-
+        <div id="ttsList"></div>
+        <div class="container" id="ttsloader">
+            <div id="loader"></div>
+        </div>
     </div>
 
-    <div class="audio-recording-container">
-        <h1 class="title">Audio Recording API Demo</h1>
-        <i class="start-recording-button fa fa-microphone" aria-hidden="true"></i>
-        <div class="recording-contorl-buttons-container hide">
-            <i class="cancel-recording-button fa fa-times-circle-o" aria-hidden="true"></i>
-            <div class="recording-elapsed-time">
-                <i class="red-recording-dot fa fa-circle" aria-hidden="true"></i>
-                <p class="elapsed-time"></p>
+    <div class=container id="formcontainer">
+        <form id="reftextform">
+            <textarea id = "reftext" rows = "3" cols = "80" name = "reftext" maxlength="160" autofocus placeholder="Enter Sentence here..."></textarea>
+        </form>
+        <br>
+    </div>
+
+    <div class="button-container">
+
+        <button id="microphone" class="green-button">
+            <span class="fa fa-microphone"></span>Record</button>
+              <button id="suggestRandomWord" class="blue-button">
+            <span class="fa fa-random"></span>Next</button>
+    </div>
+
+    <div class="container" id="recordcont">
+        <div id="recordingsList"></div>
+
+        <div class="container" id="recordloader">
+            <div id="loader"></div>
+        </div>
+
+        <div id="metrics" class="animate-bottom">
+            <div class=container>
+                <div id="summarytable">
+                    <table>
+                        <tr>
+                            <th>Accuracy Score</th>
+                            <th>Fluency Score</th>
+                            <th>Completeness Score</th>
+                            <th>Pronunciation Score</th>
+                            <th id="woh">Words Omitted</th>
+                            <th id="wih">Extra Words Spoken</th>
+                        </tr>
+                        <tr>
+                            <td id="accuracyscore"></td>
+                            <td id="fluencyscore"></td>
+                            <td id="completenessscore"></td>
+                            <td id="pronscore"></td>
+                            <td id="wordsomitted"></td>
+                            <td id="wordsinserted"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <i class="stop-recording-button fa fa-stop-circle-o" aria-hidden="true"></i>
+
+            <div class="container">
+                <div id="detailedtable">
+                    <table>
+                        <tr id="wordrow"></tr>
+                        <tr id ="phonemerow"></tr>
+                        <tr id ="scorerow"></tr>
+                    </table>
+                </div>
+            </div>
+
         </div>
-        <div class="text-indication-of-audio-playing-container">
-            <p class="text-indication-of-audio-playing hide">Audio is playing<span>.</span><span>.</span><span>.</span></p>
-        </div>
+
     </div>
 
-    <div class="overlay hide">
-        <div class="browser-not-supporting-audio-recording-box">
-            <p>To record audio, use browsers like Chrome and Firefox that support audio recording.</p>
-            <button type="button" class="close-browser-not-supported-box">Ok.</button>
-        </div>
-    </div>
+    <footer id=footeralert>Please allow the use of your microphone.</footer>
 
-    <audio controls class="audio-element hide">
-    </audio>
-
-    <script src="../static/javascript/connector.js"></script>
-    <script src="../static/javascript/get_random_word.js"></script>
-    <script src="../static/javascript/microphone.js"></script>
-    <script src="../static/javascript/record_audio.js"></script>
-
+<!--    <script src="{{ url_for('static', filename='index.js') }}"></script>-->
+<!--    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>-->
 
 </body>
 
